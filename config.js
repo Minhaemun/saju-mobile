@@ -1,5 +1,5 @@
 /* Public Supabase client settings. Publishable key is intentionally public. */
 window.BYEOLDAM_SUPABASE = {
-  url: 'https://jpuddmejjevzlytpwfds.supabase.co',
-  publishableKey: 'sb_publishable_89ZDGPwD6IunZ-uAeERieA_bDq49wJE'
+  url: 'https://lkiamndyhsednlvqwmod.supabase.co',
+  publishableKey: 'sb_publishable_S1mBIK7jnHjUuyp8JZb5Hg_psRrOpiX'
 };
