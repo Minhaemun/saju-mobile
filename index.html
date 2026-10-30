@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101a2f"><meta name="description" content="별담 운세 — 내 명식의 흐름을 바탕으로 오늘과 이번 달, 올해를 차분히 살펴봅니다.">
+  <title>별담 운세 | 나의 흐름을 읽다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#home" aria-label="별담 운세 홈"><span class="brand-mark">별</span><span>별담 <b>운세</b></span></a><div class="top-actions"><span id="user-label" class="user-label"></span><button id="logout-btn" class="text-button hidden">로그아웃</button></div></header>
+  <main>
+    <section id="home" class="screen hero-screen">
+      <div class="hero-art" aria-hidden="true"><div class="moon"></div><i class="star s1">✦</i><i class="star s2">·</i><i class="star s3">✧</i><div class="orbit o1"></div><div class="orbit o2"></div></div>
+      <div class="hero-copy"><p class="eyebrow">YOUR OWN RHYTHM, IN THE STARS</p><h1>흐름을 알면,<br><em>오늘이 조금 선명해집니다.</em></h1><p class="hero-lead">태어난 순간의 명식과 오늘의 간지를 바탕으로<br class="desktop-only"> 나를 위한 하루·한 달·한 해의 방향을 살펴보세요.</p><button class="primary-btn" data-go="auth">내 운세 시작하기 <span>→</span></button><p class="small-note">가입은 이메일과 비밀번호만으로 간단하게</p></div>
+      <div class="feature-row"><article><span>01</span><b>나의 명식</b><p>생년월일과 태어난 시각으로 계산</p></article><article><span>02</span><b>세 가지 시간</b><p>일간 · 월간 · 연간 리포트</p></article><article><span>03</span><b>나만의 기준</b><p>계산 근거와 적용 범위를 함께 안내</p></article></div>
+      <aside class="disclaimer">별담 운세는 전통 명리 해석을 바탕으로 한 교육·오락용 참고 서비스입니다. 중요한 건강·금전·법률 결정의 근거로 사용하지 마세요.</aside>
+    </section>
+
+    <section id="auth" class="screen auth-screen hidden"><div class="auth-card"><button class="back-link" data-go="home">← 처음으로</button><div class="mini-brand">✦ 별담 운세</div><h2 id="auth-title">반가워요</h2><p id="auth-caption">이메일로 시작하고, 나만의 흐름을 확인해 보세요.</p><form id="auth-form"><label>이메일<input id="email" type="email" autocomplete="email" required placeholder="name@example.com"></label><label>비밀번호<input id="password" type="password" autocomplete="current-password" minlength="6" required placeholder="6자 이상"></label><p class="field-hint">비밀번호는 6자 이상 입력해 주세요.</p><button id="auth-submit" class="primary-btn full-btn" type="submit">로그인</button></form><p id="auth-message" class="message" role="status" aria-live="polite"></p><button id="auth-mode" class="switch-button">계정이 없으신가요? <b>간편 가입</b></button><div class="auth-foot">이름과 출생 정보는 계정으로 전송하거나 저장하지 않습니다.</div></div></section>
+
+    <section id="birth" class="screen form-screen hidden"><div class="section-heading"><p class="eyebrow">YOUR BIRTH CHART</p><h2>태어난 순간을 알려주세요</h2><p>출생정보는 이 기기에서만 계산하며 서버에 저장하지 않습니다.</p></div><form id="birth-form" class="birth-card"><label>이름 또는 별명 <small>선택</small><input id="nickname" maxlength="24" autocomplete="nickname" placeholder="예: 별빛"></label><div class="input-grid"><label>생년월일<input id="birth-date" type="date" required min="1900-01-31" max="2050-12-31"></label><label>달력 기준<select id="calendar-type"><option value="solar">양력</option><option value="lunar">음력</option></select></label></div><label id="leap-wrap" class="check-line hidden"><input id="leap-month" type="checkbox"> 음력 윤달</label><div class="input-grid time-grid"><div><label>출생 시각<input id="birth-time" type="time" value="12:00" aria-describedby="time-help"></label><label class="check-line"><input id="time-unknown" type="checkbox"> 출생 시각 모름</label></div><p class="input-note" id="time-help">한국 출생·한국 표준시(KST)를 기준으로 입력하세요. 시각 모름을 선택하면 시주는 계산하지 않습니다.</p></div><div id="birth-error" class="message" role="alert"></div><button id="calculate-btn" class="primary-btn full-btn" type="submit">명식과 운세 보기 <span>→</span></button></form></section>
+
+    <section id="report" class="screen report-screen hidden"><div class="report-head"><button class="back-link" id="edit-birth">← 출생정보 수정</button><div class="report-greeting"><p class="eyebrow">YOUR PERSONAL REPORT</p><h2 id="report-title">나의 흐름</h2><p id="report-subtitle"></p></div><button id="copy-report" class="outline-btn">리포트 복사</button></div>
+      <div id="birth-summary" class="birth-summary"></div>
+      <div class="period-tabs" role="tablist" aria-label="운세 기간"><button data-period="day" role="tab">일간</button><button data-period="month" role="tab">월간</button><button data-period="year" role="tab">연간</button></div>
+      <div class="date-control"><button id="date-prev" aria-label="이전 기간">‹</button><input id="period-date" type="date" aria-label="조회 날짜"><button id="date-next" aria-label="다음 기간">›</button><button id="date-today" class="today-btn">오늘</button></div>
+      <div id="report-loading" class="loading hidden"><span></span> 명식과 기간의 흐름을 살피고 있어요</div>
+      <div id="report-content">
+        <section class="summary-card"><div class="summary-kicker">TODAY'S THEME</div><div class="summary-main"><div><h3 id="theme"></h3><p id="summary-text"></p></div><div class="stem-badge" id="focus-stem"></div></div><div class="summary-tags" id="summary-tags"></div></section>
+        <nav class="report-nav" aria-label="리포트 바로가기"><a href="#overview">종합</a><a href="#fields">분야별</a><a href="#timeline">흐름</a><a href="#actions">실천</a><a href="#basis">계산 근거</a></nav>
+        <section id="overview" class="report-section"><div class="section-title"><div><p class="eyebrow">BIRTH CHART</p><h3>나의 사주 명식</h3></div></div><div id="pillars" class="pillars"></div><div class="element-box"><h4>오행 분포 <small id="element-caption"></small></h4><div id="elements" class="elements"></div></div><p id="chart-note" class="fine-print"></p></section>
+        <section class="report-section"><div class="section-title"><div><p class="eyebrow">PERIOD RELATION</p><h3>기간의 간지와 관계</h3></div></div><div class="relation-card" id="relation"></div></section>
+        <section id="fields" class="report-section"><div class="section-title"><div><p class="eyebrow">FIVE LENSES</p><h3>분야별 상세 해석</h3></div><button id="toggle-all" class="text-button">전체 펼치기</button></div><div id="field-list" class="field-list"></div></section>
+        <section id="timeline" class="report-section"><div class="section-title"><div><p class="eyebrow">THE FLOW</p><h3 id="timeline-title">기간의 흐름</h3></div></div><div id="timeline-list" class="timeline"></div></section>
+        <section id="actions" class="report-section"><div class="section-title"><div><p class="eyebrow">SMALL STEPS</p><h3>이번 기간의 실천</h3></div></div><div id="action-list" class="action-list"></div></section>
+        <details id="basis" class="basis-card"><summary>계산 근거와 적용 범위</summary><div id="basis-content"></div></details>
+        <button id="reset-birth" class="reset-link">출생정보 다시 입력하기</button>
+      </div>
+      <footer class="report-footer">전통 명리의 규칙 기반 참고 해석이며 미래를 확정하거나 과학적 예측을 제공하지 않습니다.</footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lunar-javascript@1.7.7/lunar.js"></script>
+  <script src="./config.js"></script><script src="./app.js"></script>
+</body>
+</html>
